@@ -1,0 +1,31 @@
+
+import java.util.Map;
+import java.util.TreeMap;
+import java.util.TreeSet;
+import java.util.Iterator;
+
+public class TraverseTreeMap {
+
+
+  
+	public void traverse(TreeMap<Integer,String> tm) {
+		Iterator itrtr = tm.entrySet().iterator();
+		while (itrtr.hasNext()) {
+			Map.Entry entry = (Map.Entry)itrtr.next();
+			System.out.print("key=" + entry.getKey());
+			System.out.println(" value=" + entry.getValue());
+		}
+	}
+	
+	public static void main(String[] args) {
+		TreeMap<Integer, String> tree = new TreeMap<Integer, String>();
+		tree.put(1, "One");
+		tree.put(2, "Two");
+		tree.put(3, "Three");
+		tree.put(4, "Four");
+		tree.put(5, "Five");
+		
+		TraverseTreeMap tt = new TraverseTreeMap();
+		tt.traverse(tree);
+	}
+}
