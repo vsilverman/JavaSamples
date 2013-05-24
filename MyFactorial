@@ -1,0 +1,22 @@
+
+public class MyFactorial {
+
+  public static int calculate(int f) {
+		if (f > 1) {
+			return (f * calculate(f-1));
+		}
+		else
+			return 1;
+	}
+	
+	public static void main(String[] args) {
+		if (args.length <1)
+			System.out.println("Usage:  MyFactorial <number>");
+		else {
+			int factorial = Integer.parseInt(args[0]);
+			int result = MyFactorial.calculate(factorial);
+			System.out.println(args[0] + "! = " + result);
+		}
+	}
+	
+}
