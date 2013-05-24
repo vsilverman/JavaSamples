@@ -1,0 +1,30 @@
+
+public class TwoMaxElems {
+
+  public void printTwoMaxNumbers(int[] nums){
+        int maxmax = 0;
+        int max = 0;
+        for(int n:nums){
+            if(maxmax < n){
+                max = maxmax;
+                maxmax = n;
+            } else if(max < n){
+                max = n;
+            }
+        }
+        System.out.println("First Max Number: "+maxmax);
+        System.out.println("Second Max Number: "+max);
+    }
+     
+	/**
+	 * @param args
+	 */
+    public static void main(String args[]){
+        int num[] = {5,34,78,2,45,1,99,23};
+        TwoMaxElems tme = new TwoMaxElems();
+        tme.printTwoMaxNumbers(num);
+    }
+	
+	
+
+}
