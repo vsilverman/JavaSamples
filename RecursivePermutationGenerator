@@ -1,0 +1,47 @@
+import java.util.ArrayList;
+
+
+public class RecursivePermutationsGenerator {
+  
+	public	ArrayList<String> createPermutations(String s) {
+		ArrayList<String> permutations = new ArrayList<String>();
+		if (s.length()==1) {
+			permutations.add(s);
+		}
+		else {
+			char firstChar = s.charAt(0);
+			String smallerString = s.substring(1);
+			ArrayList<String> simplerPermutations = createPermutations(smallerString);
+			for (String str:simplerPermutations) {
+				// insert 1sr char in all possible positions
+				ArrayList<String> newPermutations = createPermutationByInsert(firstChar, str);
+				// add to resulting permutations
+				permutations.addAll(newPermutations);
+			}
+		}
+		
+		return permutations;
+		
+	}
+	
+	private ArrayList<String> createPermutationByInsert(char c, String str) {
+		ArrayList<String> res = new ArrayList<String>();
+		for (int i=0; i<=str.length(); i++) {
+			String newString = str.substring(0,i) + c + str.substring(i);
+			res.add(newString);
+		}
+		
+		return res;
+	}
+	
+	public static void main(String[] args) {
+		String origString = "123";
+		
+		RecursivePermutationsGenerator pg = new RecursivePermutationsGenerator();	
+		ArrayList<String> result = pg.createPermutations(origString);
+		for (String s:result) {
+			System.out.println(s);
+		}
+	}
+
+}
