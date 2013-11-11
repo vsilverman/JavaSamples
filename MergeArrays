@@ -1,0 +1,60 @@
+import java.util.Arrays;
+
+/**
+ * @author Vlad
+ *
+ */
+public class MergeArrays {
+	
+/*
+	merge two sorted arrays
+
+	input:
+	5, 7, 56, 71
+	8, 11, 67, 70
+
+	output:
+	5, 7, 8, 11, 56, 67, 70, 71
+*/
+	
+	public static int[] merge(int[] a, int[] b) {
+	    int size;
+	    if (a!= null && b!= null) {
+	        size = a.length + b.length;
+	    } else if (a==null && b!= null) {
+	        size = b.length;
+	    } else
+	        size = a.length;
+	    
+	    int[] resArr = new int[size];
+
+	    for (int i=0; i < size; i++) {
+	        if (a!= null && i<a.length)
+	            resArr[i] = a[i];
+	        else
+	            resArr[i] = b[i-a.length];
+	    }
+
+	    Arrays.sort(resArr);
+
+	    return resArr;
+	}
+
+	// this how resArr will look like after we exit for loop
+	// 5, 7, 56, 71, 8, 11, 67, 70
+	// sort resArr and return
+
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int a[] = {5, 7, 56, 71};
+		int b[] = {8, 11, 67, 70};
+		System.out.println("a[] = " + Arrays.toString(a));
+		System.out.println("b[] = " + Arrays.toString(b));
+
+		MergeArrays ma = new MergeArrays();
+		int c[] = ma.merge(a, b);
+		System.out.println("c[] = " + Arrays.toString(c));
+	}
+
+}
