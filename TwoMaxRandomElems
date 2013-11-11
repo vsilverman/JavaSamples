@@ -1,0 +1,58 @@
+import java.util.Arrays;
+import java.util.Random;
+
+public class TwoMaxRandomElems {
+	
+	Random random = new Random();
+	float fnums[];
+	
+	public TwoMaxRandomElems(int fnums_size, boolean print) {
+		fnums = new float[fnums_size];
+		for (int i=0; i < fnums_size; i++) {
+			fnums[i] = random.nextFloat();
+			if (print) {
+				System.out.println("initial random number: "+fnums[i]);
+			}
+		}
+	}
+	
+	public void print2Max1MinElems() {
+		float maxmax = 0;
+		float max = 0;
+		float min = Float.MAX_VALUE;
+		
+		for (float f : fnums) {
+			min = Math.min(min, f);
+			if (f > maxmax) {
+				max = maxmax;
+				maxmax = f;
+			} else if (f > max) {
+				if (max > 0)
+					min = Math.min(min, max);
+				max = f;
+			}
+		}
+	    System.out.println("1st Max Number: "+maxmax);
+	    System.out.println("2nd Max Number: "+max);
+	    System.out.println("The Min Number: "+min);
+	}
+
+	public void qprint2Max1MinElems() {
+		Arrays.sort(fnums);
+		
+	    System.out.println("\n1st Max Number: "+ fnums[fnums.length-1]);
+	    System.out.println("2nd Max Number: "+fnums[fnums.length-2]);
+	    System.out.println("The Min Number: "+fnums[0]);
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int nmbOfElems = 5; // default number of elements
+		if (args.length > 0)
+			nmbOfElems = Integer.parseInt(args[0]);
+		TwoMaxRandomElems tmre = new TwoMaxRandomElems(nmbOfElems, true);
+//		tmre.print2Max1MinElems();
+		tmre.qprint2Max1MinElems();
+	}
+
+}
