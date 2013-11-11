@@ -1,0 +1,23 @@
+
+public class StringOperations {
+	
+	public final static String STR = "123";
+	
+	public static int SumOfValues () {
+		int sum = 0;
+		char[] chars = STR.toCharArray();
+		for (Character ch:chars) {
+			sum += Integer.parseInt(ch.toString());
+		}
+		return sum;
+	}
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+	System.out.println("Sum of char values = " + SumOfValues());
+
+	}
+
+}
