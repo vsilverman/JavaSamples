@@ -1,0 +1,42 @@
+
+public class CharArray2Number {
+	
+	static String defStrArg = "123";
+	static char defCharArray[] = {'1','2','3'};
+	
+	public static int atoi(char[] a) {
+		int res = 0;
+		int len = a.length;
+		int digit;
+
+		for (int i=0; i<len; i++) {
+			if (!Character.isDigit(a[len-1-i])) {
+				System.out.println("All chars should be digits");
+				System.exit(1);
+			}
+			digit = Character.digit(a[len-1-i], 10);
+			res += digit * Math.pow(10, i);
+		}
+		
+		return res;
+	}
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		int number = 0;
+		if (args.length <1) {
+			number = CharArray2Number.atoi(defCharArray);
+		}
+		else {
+			char charArray[] = new char[args.length];
+			for (int i=0; i<args.length; i++) {
+				charArray[i] = args[i].charAt(0);
+			}
+			number = CharArray2Number.atoi(charArray);
+		}
+		System.out.println("Number = " + number);
+	}
+
+}
