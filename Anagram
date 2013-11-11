@@ -1,0 +1,89 @@
+import java.util.Arrays;
+import java.util.Hashtable;
+import java.util.Map;
+
+/**
+ * @author Vlad
+ * 
+ * This class can process a sequence of strings (sentence) 
+ * and print out a list of all anagrams in this sentence
+ * and corresponding number of its occurrences
+ * 
+ * For example given a sentence of "132 321 dad dog add god 231"
+ * it will print out:
+ *     132 3
+ *     dad 2
+ *     dog 2
+ *     
+ * Our algorithm:  
+ * 	- split sentence in array of words
+ *  - for every element of this array of words
+ *  	- sort word by characters
+ *  	- try adding sorted word to the hashtable TEMP (word sorted by chars/unsorted word)
+ *  	- if sorted word exists in TEMP try adding unsorted value from TEMP to 
+ *  		hashtable RESULTS (unsorted word/count) and increment count by 1 
+ *
+ */
+
+public class Anagram {
+	
+	public final static String SENTENCE = "132 321 dad dog add god 231";
+	
+	public static Map<String, String> temp = new Hashtable<String, String>();
+	public static Map<String, Integer> res = new Hashtable<String, Integer>();
+
+	public void process(String sentence) {
+		if (sentence == null) {
+			System.out.println("Error: Null string is passed");
+			System.exit(-1);
+		}
+		String[] words = sentence.split(" ");
+		Integer count;
+		String tempWord;
+		String origWord;
+		for (String word : words) {
+			tempWord = sortChars(word);
+			origWord = temp.get(tempWord);
+			if (origWord == null) 
+				temp.put(tempWord, word);
+			else {
+				// this word is an anagram, i.e. it already exists in TEMP hashtable
+				count = res.get(origWord);
+				if (count == null)
+					count = 1;
+				res.put(origWord, count+1);
+			}
+		}
+		System.out.println(res.toString());
+	}
+	
+	private String sortChars(String s) {
+		char c[] = s.toCharArray();
+		Arrays.sort(c);
+		String sortedStr = new String(c);
+		return sortedStr;
+	}
+	
+	
+	
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String sentence = Anagram.SENTENCE;
+		if (args.length < 1) {
+			System.out.println("Using default sentence"); 
+		}
+		else {
+			sentence = args[0];
+			for (int i=1; i < args.length; i++) {
+				sentence = sentence.concat(" " + args[i]);
+			}
+		}
+		System.out.println("Input Sentence: " + sentence);
+		Anagram a = new Anagram();
+		a.process(sentence);
+	}
+
+}
