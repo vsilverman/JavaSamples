@@ -1,0 +1,53 @@
+import java.io.File;
+
+/**
+ * @author Vlad
+ * 
+ * This class calculates total size of all files
+ * in specified directory, including all subdirs inside
+ *
+ */
+public class DirSize {
+	
+	public long size = 0;
+	
+	public void calcSize(String name) {
+		if (name == null || name.isEmpty())
+			return;
+		if (name.equals("."))
+			name = System.getProperty("user.dir");
+		File file = new File(name);
+		if (file.exists()) {
+			if (file.isDirectory() == false) {
+				long len = file.length();
+				System.out.println("File: " + name + " --- Length: " + len);
+				size += len;
+			}
+			else {
+				System.out.println("\nDirectory: " + name);
+				String[] dirFiles = file.list();
+				int i;
+				for (i=0; i<dirFiles.length; i++) {
+					calcSize(name + "\\" + dirFiles[i]);
+				}
+				System.out.println("Total Items: " + i);
+			}
+		}
+	}
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String name = ".";
+		if (args.length < 1)
+			System.out.println("Default execution: Calculataing size of current dir");
+		else
+			name = args[0];
+		DirSize ds = new DirSize();
+		ds.calcSize(name);
+		System.out.println("Total Size: " + ds.size);
+	}
+
+}
