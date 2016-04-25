@@ -15,7 +15,7 @@ import java.util.TreeSet;
  *
  */
 public class MyProperties {
-  
+	
 	public static Properties props = new Properties();
 	public static String propsFileName = "MyProperties.cfg";
 	
