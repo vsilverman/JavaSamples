@@ -8,7 +8,18 @@ import java.io.PrintWriter;
 
 /**
  This class allows executing external command 
- */
+
+ Usage: java MyCommand "command or script name"
+ Example in Windows shell:
+ 	java MyCommand "dir c:\bin"
+ 	   or
+ 	java MyCommand "\path\to\test-script.cmd"
+
+  Example in Linux shell:
+ 	java MyCommand "ls -al /c/bin"
+ 	   or
+ 	java MyCommand "sh /path/to/test-script.sh"
+*/
 
 /**
  * @author Vlad
@@ -19,6 +30,7 @@ public class MyCommand1 {
 	public static String[] envp = null; 
 	public static File dir = null;
 	public static String path ="c:\\curl-7.28.1\\src\\";
+//	public static String path ="c:\\Program Files\\Git\\mingw64\\bin\\";
 	public static String command = "curl.exe";
 	public static String paramsKey = "InfoRequest::"; 
 //	public static String params = "-i www.google.com";
@@ -33,32 +45,15 @@ public class MyCommand1 {
 		
 		String sin = null;
 		try {
-/*			
-			in = new BufferedReader(new FileReader(inFile));
-*/			
-//			out = new PrintWriter(new FileWriter(outFile));
-/*			
-			while ((sin = in.readLine()) != null) {
-				if (sin.startsWith(paramsKey)) {
-					params = sin.substring(paramsKey.length()+"::".length());
-					break;
-				}
-			}
-*/			
 			System.out.println("Command: " + cmd);
 			Process p = Runtime.getRuntime().exec(cmd, envp, dir);
 //			Process p = Runtime.getRuntime().exec(cmdarray, envp, dir);
 
-//*			
 			pInput = new BufferedReader(new InputStreamReader(p.getInputStream()));
 			while ((sin = pInput.readLine()) != null) {
 				System.out.println(sin);
-//				out.println(sin);
 			}
 			pInput.close();
-//			out.close();
-//			in.close();
-//*/
 		}
 		catch (IOException ioe) {
 			System.out.println(ioe.getStackTrace());
@@ -71,8 +66,10 @@ public class MyCommand1 {
 	 */
 	public static void main(String[] args) {
 		String MyCmd = path + command + " " + params;
+		if (System.getProperty("os.name").startsWith("Linux"))
+			MyCmd = "curl --help";
 		if (args.length < 1) {
-			System.out.println("Usage: java MyCommand commandName");
+			System.out.println("Usage: java MyCommand \"command or script name\"");
 			System.out.println("Running demo version with default params");
 		}
 		else {
