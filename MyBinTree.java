@@ -44,7 +44,14 @@ public class MyBinTree {
 				  printInOrder(node.right);
 			  }
 		 }
-		
+		 
+		 public static int calcDepth(Node node) {
+			 if(node == null)
+				 return -1;
+			 else
+				 return 1 + Math.max(calcDepth(node.left), calcDepth(node.right));
+		 }
+
 	}
 
 	/**
@@ -53,6 +60,7 @@ public class MyBinTree {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		MyBinTree tree = new MyBinTree();
+		int depth;
 		Node rootnode;
 		ArrayList<Integer> arrList = new ArrayList<Integer>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9));
 		for (Integer rootvalue: arrList) {
@@ -64,6 +72,9 @@ public class MyBinTree {
 			}
 			System.out.println("\nTraversing tree in order");
 			MyBinTree.Node.printInOrder(rootnode);
+			depth = MyBinTree.Node.calcDepth(rootnode);
+			System.out.println("\nDepth of the tree: " + depth);
+
 			System.out.println("=================================");
 		}
 
