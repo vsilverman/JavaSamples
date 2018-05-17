@@ -1,7 +1,6 @@
 
 	/**
-	 * CSE 373, Winter 2011, Jessica Miller
-	 * The BinaryHeap is an -generic- implementation of the PriorityQueue interface.  
+	 * The BinaryHeap is a -generic- implementation of the PriorityQueue interface.  
 	 * This is a binary min-heap implementation of the priority queue ADT.
 	 * 
 	 * In min-heap trees the value of each node is greater than or equal
@@ -9,11 +8,18 @@
 	 * 
 	 * Below is an example of a min-heap binary tree
 	 * 
-	 *              1
- 	 *       3             7
-	 *    5      15      9   20
-	 *  10 12  18
-	 *
+	 *               1
+ 	 *       3               7
+	 *    5      15      9      20
+	 *  10 12  18  17  11 50   30  
+	 *  
+	 *  This program keeps the tree structure and
+	 *  its data inside array. In case the size of
+	 *  the tree (array) is constant and equals N
+	 *  it is easy to keep inside this tree the N 
+	 *  largest numbers of all supplied.
+	 *  Method replaceMinValue() implements this task.  
+	 *  
 	 */
 import java.util.Random;
 import java.util.Arrays;
