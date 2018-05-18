@@ -15,7 +15,7 @@ import java.util.Random;
  *  allowing adding to the binary heap the data
  *  from the input stream of integer numbers and
  *  keep in it the 10 largest numbers from all
- *  numbers, supplied by the input data stream. 
+ *  numbers, supplied by the input data stream.
  */
 
 /**
@@ -149,16 +149,5 @@ public class MyBinaryHeapTest {
 		System.out.println("history: " + history.toString());
 		System.out.println("latest: " + latest.toString());
     }
-
-
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		MyBinaryHeap mbh = new MyBinaryHeap();
-
-
-	}
 
 }

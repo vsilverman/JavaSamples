@@ -5,7 +5,6 @@
 	 * 
 	 * In min-heap trees the value of each node is greater than or equal
 	 * to the value of its parent, with the minimum-value element at the root
-	 * 
 	 * Below is an example of a min-heap binary tree
 	 * 
 	 *               1
@@ -18,7 +17,8 @@
 	 *  the tree (array) is constant and equals N
 	 *  it is easy to keep inside this tree the N 
 	 *  largest numbers of all supplied.
-	 *  Method replaceMinValue() implements this task.  
+	 *  Method replaceMinValue() implements this task.
+	 *  In the current implementation N = 10 .  
 	 *  
 	 */
 import java.util.Random;
