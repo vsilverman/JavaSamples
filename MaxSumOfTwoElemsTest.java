@@ -11,7 +11,21 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Random;
 
+/**
+ *  This program provides unit tests for
+ *  method of finding max sum of 2 elements
+ *  from the array list of integer numbers.
+ *  
+ *  Above method tested here is defined 
+ *  inside MaxSumOfTwoElems class.  
+ *  
+ */
 
+
+/**
+ * @author Vlad
+ *
+ */
 public class MaxSumOfTwoElemsTest {
 	
 	public static ArrayList<Integer> testInput = new ArrayList<Integer>();
@@ -66,8 +80,8 @@ public class MaxSumOfTwoElemsTest {
 	 */
     @Test
     public void test2() throws Exception {
-		int[] newData = {-1, -2, -3};
-		int expectedMax = 5;
+		int[] newData = {-1, -2, -10};
+		int expectedMax = -3;
 		String failMsg = "Failed for Sequence of negative numbers";
 
 		setTestInput(newData);
@@ -143,7 +157,7 @@ public class MaxSumOfTwoElemsTest {
     @Test
     public void test7() throws Exception {
 		int[] newData = {-22, 10, -11, -10, 33};
-		int expectedMax = 55;
+		int expectedMax = 43;
 		String failMsg = "Failed for Sequence of positive and negative numbers";
 
 		setTestInput(newData);
@@ -173,7 +187,7 @@ public class MaxSumOfTwoElemsTest {
     @Test
     public void test9() throws Exception {
 		int[] newData = {Integer.MIN_VALUE, Integer.MIN_VALUE};
-		double expectedMax = Integer.MAX_VALUE * 2;
+		long expectedMax = -4294967296L;
 		String failMsg = "Failed for very large negative numbers";
 
 		setTestInput(newData);
@@ -187,7 +201,7 @@ public class MaxSumOfTwoElemsTest {
     @Test
     public void test10() throws Exception {
 		int[] newData = {Integer.MAX_VALUE, Integer.MAX_VALUE};
-		double expectedMax = Integer.MAX_VALUE * 2;
+		long expectedMax = 4294967294L;
 		String failMsg = "Failed for very large positive numbers";
 
 		setTestInput(newData);
@@ -200,7 +214,7 @@ public class MaxSumOfTwoElemsTest {
 	 */
     @Test
     public void test11() throws Exception {
-		int[] newData = {Integer.MIN_VALUE, Integer.MAX_VALUE};
+		int[] newData = {-12, 12};
 		int expectedMax = 0;
 		String failMsg = "Failed for sequence, where maximum sum is zero";
 
@@ -216,7 +230,6 @@ public class MaxSumOfTwoElemsTest {
 		for (int i : data) {
 			testInput.add(i);
 		}
-		System.out.println("testInput: " + testInput.toString());
     }
 
 
